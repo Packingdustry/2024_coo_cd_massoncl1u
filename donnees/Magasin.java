@@ -1,6 +1,5 @@
 package donnees;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -69,13 +68,29 @@ public class Magasin {
 		return(res);
 	}
 
-	public void trier() {
+	public void trierTitre() {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		int nb = listeCds.size();
 		for (int i = 0; i < nb; i++) {
 			CD min = listeCds.getFirst();
 			for (int j = 0; j < listeCds.size(); j++) {
-				if (min.compareTo(listeCds.get(j)) > 0) {
+				if (min.compareTitre(listeCds.get(j)) > 0) {
+					min = listeCds.get(j);
+				}
+			}
+			listeCds.remove(min);
+			listeTemp.add(min);
+		}
+		listeCds = listeTemp;
+	}
+
+	public void trierArtiste() {
+		ArrayList<CD> listeTemp = new ArrayList<>();
+		int nb = listeCds.size();
+		for (int i = 0; i < nb; i++) {
+			CD min = listeCds.getFirst();
+			for (int j = 0; j < listeCds.size(); j++) {
+				if (min.compareArtiste(listeCds.get(j)) > 0) {
 					min = listeCds.get(j);
 				}
 			}
