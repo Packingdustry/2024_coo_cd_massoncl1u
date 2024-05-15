@@ -1,0 +1,4 @@
+La classe ChargeurMagasin a un attribut qui est un répertoire. 
+Les fichiers du répertoire sont chargés un par un par la classe ChargeurCD. 
+Pendant le chargement on récupère le nom du CD, de l'artiste et des pistes. 
+Lorsque les opérations sont finies on ajoute toutes les pistes au CD, puis le CD au magasin. 
