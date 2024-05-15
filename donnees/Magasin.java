@@ -1,5 +1,6 @@
 package donnees;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -68,6 +69,20 @@ public class Magasin {
 		return(res);
 	}
 
-	// TODO  ajouter une methode de tri
+	public void trier() {
+		ArrayList<CD> listeTemp = new ArrayList<>();
+		int nb = listeCds.size();
+		for (int i = 0; i < nb; i++) {
+			CD min = listeCds.getFirst();
+			for (int j = 0; j < listeCds.size(); j++) {
+				if (min.compareTo(listeCds.get(j)) > 0) {
+					min = listeCds.get(j);
+				}
+			}
+			listeCds.remove(min);
+			listeTemp.add(min);
+		}
+		listeCds = listeTemp;
+	}
 
 }
