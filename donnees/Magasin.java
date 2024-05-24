@@ -95,4 +95,23 @@ public class Magasin {
 		listeCds = listeTemp;
 	}
 
+	public ArrayList<CD> chercherArtiste(String artiste) {
+		SelecteurArtiste selec = new SelecteurArtiste();
+		return chercher(selec, artiste);
+	}
+
+	public ArrayList<CD> chercherTitre(String titre) {
+		SelecteurAlbum selec = new SelecteurAlbum();
+		return chercher(selec, titre);
+	}
+
+	public ArrayList<CD> chercher(SelecteurCD select, String motCle) {
+		ArrayList<CD> listeTemp = new ArrayList<>();
+		for(CD cd : listeCds) {
+			if (select.etreEgal(cd, motCle)) {
+				listeTemp.add(cd);
+			}
+		}
+		return listeTemp;
+	}
 }
