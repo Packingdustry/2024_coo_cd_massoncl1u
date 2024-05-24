@@ -44,6 +44,7 @@ public class Magasin {
 			chaineResultat += listeCds.get(i);
 		}
 		chaineResultat += "nb Cds: " + listeCds.size();
+		chaineResultat += "\n--------------------------------------\n\n";
 		return (chaineResultat);
 
 	}
@@ -69,31 +70,23 @@ public class Magasin {
 	}
 
 	public void trierTitre() {
-		ArrayList<CD> listeTemp = new ArrayList<>();
-		int nb = listeCds.size();
-		for (int i = 0; i < nb; i++) {
-			CD min = listeCds.getFirst();
-			for (int j = 0; j < listeCds.size(); j++) {
-				if (min.compareTitre(listeCds.get(j)) > 0) {
-					min = listeCds.get(j);
-				}
-			}
-			listeCds.remove(min);
-			listeTemp.add(min);
-		}
-		listeCds = listeTemp;
+		trier(CD.TITRE);
 	}
 
 	public void trierArtiste() {
+		trier(CD.ARTISTE);
+	}
+
+	public void trier(String p) {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		int nb = listeCds.size();
 		for (int i = 0; i < nb; i++) {
 			CD min = listeCds.getFirst();
-			for (int j = 0; j < listeCds.size(); j++) {
-				if (min.compareArtiste(listeCds.get(j)) > 0) {
-					min = listeCds.get(j);
-				}
-			}
+            for (CD listeCd : listeCds) {
+                if (min.compare(listeCd, p) > 0) {
+                    min = listeCd;
+                }
+            }
 			listeCds.remove(min);
 			listeTemp.add(min);
 		}

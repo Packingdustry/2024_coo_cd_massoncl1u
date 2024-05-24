@@ -23,6 +23,8 @@ public class CD {
 	 * dans toString
 	 */
 	private static final String SEPARATOR = "--------------------------------------\n";
+	public static final String ARTISTE = "artiste";
+	public static final String TITRE = "titre";
 
 	/**
 	 * les attributs du CD
@@ -97,12 +99,12 @@ public class CD {
 		return (resultat);
 	}
 
-	public int compareTitre(CD cd) {
-		return (this.nomCD.compareTo(cd.nomCD));
-	}
-
-	public int compareArtiste(CD cd) {
-		return (this.nomArtiste.compareTo(cd.nomArtiste));
+	public int compare(CD cd, String p) {
+		if (p.equals(CD.ARTISTE)) {
+			return (this.nomArtiste.compareTo(cd.nomArtiste));
+		} else {
+			return (this.nomCD.compareTo(cd.nomCD));
+		}
 	}
 
 	public String getNomCD() {
