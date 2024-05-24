@@ -104,4 +104,12 @@ public class CD {
 	public int comparerTitre(CD cd) {
 		return (this.nomCD.compareTo(cd.nomCD));
 	}
+
+	public String getNomArtiste() {
+		return this.nomArtiste;
+	}
+
+	public String getNomCD() {
+		return nomCD;
+	}
 }
