@@ -1,8 +1,7 @@
 package test;
 
 import XML.ChargeurMagasin;
-import donnees.CD;
-import donnees.Magasin;
+import donnees.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -15,8 +14,11 @@ class MagasinTest {
     void trierTitre() throws FileNotFoundException {
         ChargeurMagasin cm = new ChargeurMagasin("fichiers");
         Magasin m = cm.chargerMagasin();
+        System.out.println(m);
         m.trierTitre();
-        assertTrue(m.getCd(0).compare(m.getCd(11), CD.TITRE) < 0, "le 1er cd devrait être avant le dernier");
+        System.out.println(m);
+        ComparateurAlbum comp = new ComparateurAlbum();
+        assertTrue(comp.etreAvant(m.getCd(0), m.getCd(11)), "Le 1er CD devrait être avant le dernier. ");
     }
 
     @Test
@@ -24,6 +26,7 @@ class MagasinTest {
         ChargeurMagasin cm = new ChargeurMagasin("fichiers");
         Magasin m = cm.chargerMagasin();
         m.trierArtiste();
-        assertTrue(m.getCd(0).compare(m.getCd(11), CD.ARTISTE) < 0, "le 1er cd devrait être avant le dernier");
+        ComparateurArtiste comp = new ComparateurArtiste();
+        assertTrue(comp.etreAvant(m.getCd(0), m.getCd(11)), "Le 1er CD devrait être avant le dernier. ");
     }
 }

@@ -70,21 +70,23 @@ public class Magasin {
 	}
 
 	public void trierTitre() {
-		trier(CD.TITRE);
+		ComparateurAlbum comp = new ComparateurAlbum();
+		trier(comp);
 	}
 
 	public void trierArtiste() {
-		trier(CD.ARTISTE);
+		ComparateurArtiste comp = new ComparateurArtiste();
+		trier(comp);
 	}
 
-	public void trier(String p) {
+	public void trier(ComparateurCD comp) {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		int nb = listeCds.size();
 		for (int i = 0; i < nb; i++) {
 			CD min = listeCds.getFirst();
-            for (CD listeCd : listeCds) {
-                if (min.compare(listeCd, p) > 0) {
-                    min = listeCd;
+            for (CD cd : listeCds) {
+                if (comp.etreAvant(cd, min)) {
+                    min = cd;
                 }
             }
 			listeCds.remove(min);

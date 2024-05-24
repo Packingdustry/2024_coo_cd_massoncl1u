@@ -99,12 +99,12 @@ public class CD {
 		return (resultat);
 	}
 
-	public int compare(CD cd, String p) {
-		if (p.equals(CD.ARTISTE)) {
-			return (this.nomArtiste.compareTo(cd.nomArtiste));
-		} else {
-			return (this.nomCD.compareTo(cd.nomCD));
-		}
+	public int compareArtiste(CD cd) {
+		return (this.nomArtiste.compareTo(cd.nomArtiste));
+	}
+
+	public int compareTitre(CD cd) {
+		return (this.nomCD.compareTo(cd.nomCD));
 	}
 
 	public String getNomCD() {
