@@ -130,6 +130,37 @@ public class Magasin {
 
 	public ArrayList<CD> chercherET(SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
 		SelecteurET selec = new SelecteurET();
+		return chercherMulti(selec, s1, motCle1, s2, motCle2);
+	}
+
+	public ArrayList<CD> chercherArtisteOuArtiste(String artiste1, String artiste2) {
+		SelecteurArtiste s1 = new SelecteurArtiste();
+		SelecteurArtiste s2 = new SelecteurArtiste();
+		return chercherOU(s1, artiste1, s2, artiste2);
+	}
+
+	public ArrayList<CD> chercherTitreOuTitre(String titre1, String titre2) {
+		SelecteurAlbum s1 = new SelecteurAlbum();
+		SelecteurAlbum s2 = new SelecteurAlbum();
+		return chercherOU(s1, titre1, s2, titre2);
+	}
+
+	public ArrayList<CD> chercherArtisteOuTitre(String artiste, String titre) {
+		SelecteurArtiste s1 = new SelecteurArtiste();
+		SelecteurAlbum s2 = new SelecteurAlbum();
+		return chercherOU(s1, artiste, s2, titre);
+	}
+
+	public ArrayList<CD> chercherTitreOuArtiste(String titre, String artiste) {
+		return chercherArtisteOuTitre(artiste, titre);
+	}
+
+	public ArrayList<CD> chercherOU(SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
+		SelecteurOU selec = new SelecteurOU();
+		return chercherMulti(selec, s1, motCle1, s2, motCle2);
+	}
+
+	public ArrayList<CD> chercherMulti(SelecteurMulti selec, SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		for(CD cd : listeCds) {
 			if (selec.etreEgal(cd, s1, motCle1, s2, motCle2)) {
