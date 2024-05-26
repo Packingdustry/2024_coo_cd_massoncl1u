@@ -160,6 +160,21 @@ public class Magasin {
 		return chercherMulti(selec, s1, motCle1, s2, motCle2);
 	}
 
+	public ArrayList<CD> chercherNonArtiste(String artiste) {
+		SelecteurArtiste selec = new SelecteurArtiste();
+		return chercherNON(selec, artiste);
+	}
+
+	public ArrayList<CD> chercherNonTitre(String titre) {
+		SelecteurAlbum selec = new SelecteurAlbum();
+		return chercherNON(selec, titre);
+	}
+
+	public ArrayList<CD> chercherNON(SelecteurCD s1, String motCle) {
+		SelecteurNON selec = new SelecteurNON();
+		return chercherMulti(selec, s1, motCle, null, null);
+	}
+
 	public ArrayList<CD> chercherMulti(SelecteurMulti selec, SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		for(CD cd : listeCds) {
