@@ -1,6 +1,10 @@
-package donnees;
+package test;
 
 import XML.ChargeurMagasin;
+import donnees.CD;
+import donnees.ComparateurAlbum;
+import donnees.ComparateurArtiste;
+import donnees.Magasin;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
