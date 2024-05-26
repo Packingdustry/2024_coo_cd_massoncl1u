@@ -1,5 +1,6 @@
 package donnees;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -103,6 +104,39 @@ public class Magasin {
 	public ArrayList<CD> chercherTitre(String titre) {
 		SelecteurAlbum selec = new SelecteurAlbum();
 		return chercher(selec, titre);
+	}
+
+	public ArrayList<CD> chercherTitreEtTitre(String titre1, String titre2) {
+		SelecteurAlbum s1 = new SelecteurAlbum();
+		SelecteurAlbum s2 = new SelecteurAlbum();
+		return chercherET(s1, titre1, s2, titre2);
+	}
+
+	public ArrayList<CD> chercherArtisteEtArtiste(String artiste1, String artiste2) {
+		SelecteurArtiste s1 = new SelecteurArtiste();
+		SelecteurArtiste s2 = new SelecteurArtiste();
+		return chercherET(s1, artiste1, s2, artiste2);
+	}
+
+	public ArrayList<CD> chercherArtisteEtTitre(String artiste, String titre) {
+		SelecteurArtiste s1 = new SelecteurArtiste();
+		SelecteurAlbum s2 = new SelecteurAlbum();
+		return chercherET(s1, artiste, s2, titre);
+	}
+
+	public ArrayList<CD> chercherTitreEtArtiste(String titre, String artiste) {
+		return chercherArtisteEtTitre(artiste, titre);
+	}
+
+	public ArrayList<CD> chercherET(SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
+		SelecteurET selec = new SelecteurET();
+		ArrayList<CD> listeTemp = new ArrayList<>();
+		for(CD cd : listeCds) {
+			if (selec.etreEgal(cd, s1, motCle1, s2, motCle2)) {
+				listeTemp.add(cd);
+			}
+		}
+		return listeTemp;
 	}
 
 	public ArrayList<CD> chercher(SelecteurCD select, String motCle) {
