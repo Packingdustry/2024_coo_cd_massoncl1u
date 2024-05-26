@@ -80,7 +80,7 @@ public class Magasin {
 		trier(comp);
 	}
 
-	public void trier(ComparateurCD comp) {
+	private void trier(ComparateurCD comp) {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		int nb = listeCds.size();
 		for (int i = 0; i < nb; i++) {
@@ -128,7 +128,7 @@ public class Magasin {
 		return chercherArtisteEtTitre(artiste, titre);
 	}
 
-	public ArrayList<CD> chercherET(SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
+	private ArrayList<CD> chercherET(SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
 		SelecteurET selec = new SelecteurET();
 		return chercherMulti(selec, s1, motCle1, s2, motCle2);
 	}
@@ -155,7 +155,7 @@ public class Magasin {
 		return chercherArtisteOuTitre(artiste, titre);
 	}
 
-	public ArrayList<CD> chercherOU(SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
+	private ArrayList<CD> chercherOU(SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
 		SelecteurOU selec = new SelecteurOU();
 		return chercherMulti(selec, s1, motCle1, s2, motCle2);
 	}
@@ -170,12 +170,12 @@ public class Magasin {
 		return chercherNON(selec, titre);
 	}
 
-	public ArrayList<CD> chercherNON(SelecteurCD s1, String motCle) {
+	private ArrayList<CD> chercherNON(SelecteurCD s1, String motCle) {
 		SelecteurNON selec = new SelecteurNON();
 		return chercherMulti(selec, s1, motCle, null, null);
 	}
 
-	public ArrayList<CD> chercherMulti(SelecteurMulti selec, SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
+	private ArrayList<CD> chercherMulti(SelecteurMulti selec, SelecteurCD s1, String motCle1, SelecteurCD s2, String motCle2) {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		for(CD cd : listeCds) {
 			if (selec.etreEgal(cd, s1, motCle1, s2, motCle2)) {
@@ -185,7 +185,7 @@ public class Magasin {
 		return listeTemp;
 	}
 
-	public ArrayList<CD> chercher(SelecteurCD select, String motCle) {
+	private ArrayList<CD> chercher(SelecteurCD select, String motCle) {
 		ArrayList<CD> listeTemp = new ArrayList<>();
 		for(CD cd : listeCds) {
 			if (select.etreEgal(cd, motCle)) {
